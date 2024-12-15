@@ -1,8 +1,12 @@
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
+import { logger } from "hono/logger";
 
 const app = new Hono();
+const customLogger = (message: string, ...rest: string[]) => {
+  console.log(message, ...rest);
+};
 
 app.use(
   "/*",
@@ -16,12 +20,14 @@ app.use(
     credentials: true,
   })
 );
+app.use(logger(customLogger));
 
 app.get("/", (c) => {
   return c.text("Hello Hono!");
 });
 app.post("/autoComplete/", async (c) => {
   const { keyword } = await c.req.json();
+  customLogger(keyword);
   return c.json({ list: [`${keyword} 候補1`, `${keyword} 候補2`] });
 });
 
