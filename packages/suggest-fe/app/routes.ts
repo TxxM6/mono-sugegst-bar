@@ -7,8 +7,9 @@ import {
 
 export default [
   ...prefix("suggest", [
-    index("./suggest/index.page.tsx"),
-    route("normal", "./suggest/normal/index.page.tsx"),
-    route("abort", "./suggest/abort/index.page.tsx"),
+    route("step1", "./suggest/step1/index.page.tsx"),
+    route("step2", "./suggest/step2/index.page.tsx"),
+    route("step3", "./suggest/step3/index.page.tsx"),
+    route("step4", "./suggest/step4/index.page.tsx"),
   ]),
 ] satisfies RouteConfig;

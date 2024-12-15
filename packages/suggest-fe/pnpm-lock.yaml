@@ -26,6 +26,9 @@ importers:
       react-router:
         specifier: 7.0.2-pre.0
         version: 7.0.2-pre.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      zod:
+        specifier: ^3.24.1
+        version: 3.24.1
     devDependencies:
       '@react-router/dev':
         specifier: 7.0.2-pre.0
@@ -1640,6 +1643,9 @@ packages:
     engines: {node: '>= 14'}
     hasBin: true
 
+  zod@3.24.1:
+    resolution: {integrity: sha512-muH7gBL9sI1nciMZV67X5fTKKBLtwpZ5VBp1vsOQzj1MhrBZ4wlVCm3gedKZWLp0Oyel8sIGfeiz54Su+OVT+A==}
+
 snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
@@ -3237,3 +3243,5 @@ snapshots:
   yallist@3.1.1: {}
 
   yaml@2.6.1: {}
+
+  zod@3.24.1: {}
