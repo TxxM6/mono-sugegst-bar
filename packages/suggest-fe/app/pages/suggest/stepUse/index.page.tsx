@@ -1,8 +1,11 @@
-import { startTransition, Suspense, useEffect, useState } from "react";
+import { startTransition, Suspense, useState } from "react";
 import Suggestions from "~/components/Suggestions";
 import TextBox from "~/components/TextBox";
 import ToggleArea from "~/components/ToggleArea";
+import { fetchAutoComplete } from "~/lib/fetchAutoComplete";
+import useDebouncedEffectWithAbort from "~/lib/useDebouncedEffectWithAbort";
 import { SuspendSuggestion } from "./_component/SuspendSuggestion";
+import { TextSus } from "./_component/TestSus";
 
 export const Page = () => {
   const [sugText, setSugText] = useState("");
@@ -11,14 +14,8 @@ export const Page = () => {
 
   function onInput(e: React.ChangeEvent<HTMLInputElement>) {
     const currentValue = e.target.value;
-    abortController.abort();
     startTransition(() => setSugText(currentValue));
   }
-  const abortController = new AbortController();
-  const signal = abortController.signal;
-  // useEffect(() => {
-  //   return abortController.abort();
-  // }, [sugText]);
 
   return (
     <>
@@ -30,13 +27,11 @@ export const Page = () => {
       />
       <div className="relative w-full">
         <TextBox onInput={onInput} />
-        <Suspense fallback={<Suggestions suggestions={["..."]} />}>
-          <SuspendSuggestion
-            text={sugText}
-            reverseOption={isReverse}
-            signal={signal}
-          />
-        </Suspense>
+        {/* <Suspense fallback={<Suggestions suggestions={["..."]} />}>
+          <SuspendSuggestion text={sugText} reverseOption={isReverse} />
+        </Suspense> */}
+
+        <TextSus />
       </div>
     </>
   );

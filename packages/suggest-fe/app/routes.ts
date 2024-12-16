@@ -12,5 +12,6 @@ export default [
     route("step3", "./pages/suggest/step3/index.page.tsx"),
     route("step4", "./pages/suggest/step4/index.page.tsx"),
     route("step5", "./pages/suggest/step5/index.page.tsx"),
+    route("react", "./pages/suggest/reactExample/index.page.tsx"),
   ]),
 ] satisfies RouteConfig;
